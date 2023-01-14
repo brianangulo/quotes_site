@@ -4,12 +4,12 @@
     }
 ?>
 <!--header-->
-<?php include './includes/header.php' ?>
-<h1 class="name">my name is brian</h1>
+<?php include __DIR__.'/includes/header.php' ?>
+<h1 class="name">my name is <?php echo __DIR__ ?> </h1>
 <form method="post">
     <input type="text" name="user">
     <input type="submit">
 </form>
 <!--footer-->
-<?php include './includes/footer.php' ?>
+<?php include __DIR__.'/includes/footer.php' ?>
 <script src="js/script.js"></script>
