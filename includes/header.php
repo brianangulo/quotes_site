@@ -10,9 +10,9 @@
 </head>
 <body>
 <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2 mb-4 border-bottom">
+    <header class="py-2 mb-4 border-bottom">
       <ul class="nav col-12 col-md-auto justify-content-end mb-md-0">
-        <li><a href="https://github.com/brianangulo/quotes_site" class="nav-link px-2 link-dark">Github</a></li>
+        <li><a target="_blank" href="https://github.com/brianangulo/quotes_site" class="nav-link px-2 link-dark">Github</a></li>
       </ul>
     </header>
   </div>
