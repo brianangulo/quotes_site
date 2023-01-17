@@ -8,6 +8,16 @@
     <title>Random Quotes</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PN3H0K357T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PN3H0K357T');
+</script>
+<!-- Google tag (gtag.js) above -->
 <body>
 <div class="container">
     <header class="py-2 mb-4 border-bottom">
