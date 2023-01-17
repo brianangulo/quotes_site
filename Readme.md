@@ -1,0 +1,1 @@
+A simple PHP quote generation website. The plan is to improve this site and use it to display AI generated quotes.

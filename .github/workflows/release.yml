@@ -1,0 +1,36 @@
+name: Deploy to server
+on:
+  push:
+    branches: [master]
+
+jobs:
+  release_and_deploy:
+    name: Releases on github and deploys to server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set Tag to env
+        run: echo "CURRENT_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_ENV
+
+      - name: Deploying using ssh
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /home/quotes_site
+            bash deploy.sh
+          host: ${{ secrets.SSH_HOST }}
+          user: root
+          key: ${{ secrets.SSH_KEY }}
+      
+      - name: Create GH release
+        id: creates_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.CURRENT_TAG }}
+          release_name: ${{ env.CURRENT_TAG }}

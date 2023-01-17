@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+    app:
+        # port 9000
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        container_name: quotes_site
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - quotes_site:/var/www
+    nginx:
+        # port 3000
+        build:
+            context: ./nginx/
+            dockerfile: Dockerfile
+        container_name: quotes_site_nginx
+        restart: unless-stopped
+        volumes:
+            - quotes_site:/var/www
+volumes:
+    quotes_site:
+networks:
+    default:
+        name: server_internal
+        external: true
