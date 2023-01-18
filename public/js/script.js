@@ -13,12 +13,17 @@ function renderQuote(quote) {
  */
 async function fetchFreshQuote() {
     let errMessage = 'Error occurred sorry, please try again.';
-    let quoteLocation = '/api/random-quote';
-    const response = await fetch(quoteLocation);
-    // if response is success then we return the quote
-    if (response.ok) {
-        let json = await response.json();
-        return json['quote'];
+    let quoteLocation = '/api/random-quote/';
+    try {
+        const response = await fetch(quoteLocation);
+        // if response is success then we return the quote
+        if (response.ok) {
+            let json = await response.json();
+            return json['quote'];
+        }
+    } catch (error) {
+        console.error('Error fetching quote: ', error);
+        return errMessage;
     }
     return errMessage;
 }
@@ -40,8 +45,6 @@ async function refreshQuote() {
     // remove loading states
     btn.innerText = btnTitle;
     btn.removeAttribute('disabled');
-    // hide spinner
-    spinner.setAttribute('hidden', true);
     // add spinner back to button
     btn.appendChild(spinnerClone);
 }
