@@ -2,14 +2,12 @@
 
 namespace App;
 
-use App\Api;
-
 /**
  * Class will handle the grabbing of quotes from APIs and formatting
  */
 class Quotes
 {
-    private static $quotableBaseUrl = 'https://quotable.io/';
+    private static string $quotableBaseUrl = 'https://quotable.io/';
 
     /**
      * Calls the quotable API and returns a formatted quote
@@ -17,7 +15,7 @@ class Quotes
      */
     public static function getRandomQuotable(): string
     {
-        $response = Api::getJson(self::$quotableBaseUrl . 'random');
+        $response = HttpClient::getJson(self::$quotableBaseUrl . 'random');
         if ($response !== null) {
             $quote = $response['content'];
             $author = $response['author'];
