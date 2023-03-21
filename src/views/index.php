@@ -1,7 +1,7 @@
 <?php
 use App\Quotes;
 
-$quote = Quotes::getRandomQuotable();
+$quote = (new Quotes())->getRandomQuotable();
 ?>
 
 <!--header-->

@@ -6,6 +6,7 @@ require __DIR__ . '/../src/requires.php';
 
 use Bramus\Router\Router;
 use \App\api\Api;
+use App\Quotes;
 
 // Create Router instance
 $router = new Router();
@@ -14,7 +15,9 @@ $router->get('/', function () {
     require __DIR__ . '/../src/views/index.php';
 });
 
-$router->get('/api/random-quote', [Api::class, 'randomQuote']);
+$router->get('/api/random-quote', function () {
+    Api::randomJsonQuote(new Quotes());
+});
 
 $router->set404(function () {
   header('Location: /');
