@@ -16,4 +16,8 @@ $router->get('/', function () {
 
 $router->get('/api/random-quote', [Api::class, 'randomQuote']);
 
+$router->set404(function () {
+  header('Location: /');
+});
+
 $router->run();
