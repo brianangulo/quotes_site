@@ -13,7 +13,7 @@ class Quotes
      * Calls the quotable API and returns a formatted quote
      * @return string a formatted quote & actor
      */
-    public static function getRandomQuotable(): string
+    public function getRandomQuotable(): string
     {
         $response = HttpClient::getJson(self::$quotableBaseUrl . 'random');
         if ($response !== null) {
@@ -32,16 +32,5 @@ class Quotes
     {
         $formattedQuote = '"' . $quote . '"' . ' -' . $author;
         return $formattedQuote;
-    }
-
-    /**
-     * Grabs a quotable random quote and returns it formatted as json with 1 key: 'quote'
-     * @return string json object with a key of 'quote' containing the formatted quote
-     */
-    public static function getRandomQuotableJson(): string
-    {
-        $quote = self::getRandomQuotable();
-        $quoteJson = ['quote' => $quote];
-        return json_encode($quoteJson);
     }
 }
