@@ -1,12 +1,11 @@
 <?php
-use App\Utils;
 use App\Quotes;
 
 $quote = Quotes::getRandomQuotable();
 ?>
 
 <!--header-->
-<?php Utils::includes('header.php'); ?>
+<?php require __DIR__ . '/header.php' ?>
 <div class="container container-fluid min-vh-100 justify-content-center align-item-center d-flex flex-column text-center">
     <h2 class="text-primary pb-4">Refresh for quotes</h2>
     <!-- quote -->
@@ -17,5 +16,5 @@ $quote = Quotes::getRandomQuotable();
     </button>
 </div>
 <!--footer-->
-<?php Utils::includes('footer.php'); ?>
+<?php require __DIR__ . '/footer.php' ?>
 <script defer src="js/script.js"></script>
