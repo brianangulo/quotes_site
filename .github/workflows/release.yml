@@ -16,6 +16,14 @@ jobs:
       - name: Set Tag to env
         run: echo "CURRENT_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_ENV
 
+      - name: Setting up .env first to avoid race conditions
+        uses: fifsky/ssh-action@master
+        with:
+          command: echo "${{ secrets.PROD_ENV }}" | base64 --decode > /home/quotes_site/.env
+          host: ${{ secrets.SSH_HOST }}
+          user: root
+          key: ${{ secrets.SSH_KEY }}
+
       - name: Deploying using ssh
         uses: fifsky/ssh-action@master
         with:
@@ -25,7 +33,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           user: root
           key: ${{ secrets.SSH_KEY }}
-      
+
       - name: Create GH release
         id: creates_release
         uses: actions/create-release@v1
