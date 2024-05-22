@@ -1,0 +1,8 @@
+{
+    "allowed": [
+        {
+            "user": "test",
+            "token": "tokenizer"
+        }
+    ]
+}
