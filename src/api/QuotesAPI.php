@@ -1,11 +1,13 @@
 <?php
+
 namespace App\api;
+
 use App\Quotes;
 
 /**
  * Class wrapper of the GuzzleHttp client for simplifying making api calls
  */
-class Api
+class QuotesApi
 {
     /**
      * Random quote api service function

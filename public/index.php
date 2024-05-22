@@ -5,7 +5,7 @@ require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../src/requires.php';
 
 use Bramus\Router\Router;
-use \App\api\Api;
+use \App\api\QuotesApi;
 use App\Quotes;
 use App\Authenticator;
 
@@ -33,9 +33,8 @@ $router->get('/foo', function () {
   require __DIR__ . '/../src/views/index.php';
 });
 
-
 $router->get('/api/random-quote', function () {
-  Api::randomJsonQuote(new Quotes());
+  QuotesApi::randomJsonQuote(new Quotes());
 });
 
 $router->set404(function () {
