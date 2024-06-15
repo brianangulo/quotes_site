@@ -4,6 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 // required app loaders and globals
 require __DIR__ . '/../src/requires.php';
 
+use App\api\Ai;
 use Bramus\Router\Router;
 use \App\api\QuotesApi;
 use App\Quotes;
@@ -23,6 +24,10 @@ $router->before('GET|POST|PUT|DELETE|HEAD|PATCH|CONNECT|OPTIONS|TRACE', '/.*', f
     http_response_code(401);
     exit();
   }
+});
+
+$router->get('/random-html', function () {
+  echo Ai::generateRandomHTML();
 });
 
 $router->get('/', function () {
